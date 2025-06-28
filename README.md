@@ -2,19 +2,6 @@
 
 A machine learning-powered web application that classifies news articles as either **FAKE** or **REAL** using Natural Language Processing techniques and multiple classification algorithms.
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Models & Performance](#models--performance)
-- [Dataset](#dataset)
-- [Technical Details](#technical-details)
-- [API Reference](#api-reference)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## 🎯 Overview
 
@@ -59,40 +46,6 @@ fake-news-detector/
 └── README.md                          # This file
 ```
 
-## 🚀 Installation
-
-### Prerequisites
-
-- Python 3.7+
-- pip package manager
-
-### Setup Instructions
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/Alaaokaly/fake-news-detector.git
-cd fake-news-detection
-```
-
-2. **Install required packages**
-```bash
-pip install -r requirements.txt
-```
-
-3. **Download NLTK data**
-```python
-import nltk
-nltk.download('stopwords')
-```
-
-4. **Prepare the dataset**
-   - Place your `fake_or_real_news.csv` file in the `data/` directory
-   - The dataset should contain columns: `text`, `title`, and `label`
-
-5. **Train the models** (if not using pre-trained models)
-```bash
-python train_model.py
-```
 
 ## 🎮 Usage
 
@@ -153,18 +106,7 @@ This will:
   - Min document frequency: 5
   - Max document frequency: 85%
 
-- **Count Vectorizer**:
-  - Same parameters as TF-IDF
-  - Simple word counting approach
 
-### Performance Metrics
-
-The system evaluates models using:
-- **Accuracy**: Overall classification accuracy
-- **Precision**: True positive rate for fake news detection
-- **Recall**: Coverage of actual fake news
-- **F1-Score**: Harmonic mean of precision and recall
-- **Confusion Matrix**: Detailed classification breakdown
 
 ## 📊 Dataset
 
@@ -176,25 +118,6 @@ The system expects a CSV file with the following structure:
 | `title` | Headline of the article |
 | `label` | Classification label ('FAKE' or 'REAL') |
 
-### Data Preprocessing
-
-1. **Text Cleaning**:
-   - Convert to lowercase
-   - Remove extra whitespaces
-   - Remove special characters (keep alphanumeric and periods)
-   - Strip leading/trailing spaces
-
-2. **Feature Engineering**:
-   - Combine title and text
-   - Filter articles with less than 10 characters
-   - Remove common stopwords + custom domain-specific stopwords
-
-3. **Validation**:
-   - Minimum length requirements
-   - Word count validation
-   - Input format checking
-
-## 🔧 Technical Details
 
 ### Text Processing Pipeline
 
@@ -207,40 +130,6 @@ def clean_text(text):
     return text.strip()
 ```
 
-### Custom Stopwords
-
-The system uses enhanced stopword filtering:
-- Standard English stopwords (NLTK)
-- Custom domain-specific words: 'said', 'will', 'one', 'people', 'now', 'time', 'say', 'reports'
-
-### Model Persistence
-
-All trained models and vectorizers are saved using `joblib` for efficient loading and consistent predictions.
-
-## 📡 API Reference
-
-### Core Functions
-
-#### `predict(text, model_name="lr", vectorizer_name="tfidf")`
-
-**Parameters:**
-- `text` (str): Input text to classify
-- `model_name` (str): Model choice ("lr" or "nb")
-- `vectorizer_name` (str): Vectorizer choice ("tfidf" or "count")
-
-**Returns:**
-- `prediction` (str): Classification result ("FAKE" or "REAL")
-- `confidence` (float): Confidence score (0.0 to 1.0)
-
-#### `validate_input(text, title="")`
-
-**Parameters:**
-- `text` (str): Main text content
-- `title` (str): Optional title
-
-**Returns:**
-- `is_valid` (bool): Whether input passes validation
-- `result` (str): Cleaned text or error message
 
 ## 🎨 User Interface
 
@@ -269,58 +158,3 @@ nltk>=3.8
 joblib>=1.3.0
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-
-- Follow PEP 8 style guidelines
-- Add comprehensive docstrings
-- Include unit tests for new features
-- Update documentation as needed
-
-## 📝 Logging
-
-The application logs all activities to `app.log`:
-- Prediction results and confidence scores
-- Input processing details
-- Model and vectorizer usage
-- Error messages and debugging information
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-1. **ModuleNotFoundError**: Ensure all dependencies are installed
-2. **NLTK Data Missing**: Run `nltk.download('stopwords')`
-3. **Model Files Missing**: Run the training script to generate models
-4. **Input Validation Errors**: Check text length and format requirements
-
-### Performance Tips
-
-- Use TF-IDF with Logistic Regression for best accuracy
-- Ensure input text is substantial (>10 characters, >3 words)
-- Combine title and body text for better predictions
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **scikit-learn** for machine learning algorithms
-- **Streamlit** for the web interface framework
-- **NLTK** for natural language processing tools
-- **pandas** for data manipulation capabilities
-
----
-
-**Built with ❤️ for fighting misinformation**
-#   F a k e - N e w s - D e t e c t o r  
- #   F a k e - N e w s - D e t e c t o r  
- 
